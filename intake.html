@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Early Risk Scan Intake | VXS Industrial Intelligence</title>
+  <meta name="description" content="Apply for a free early FDE risk scan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="index.html" aria-label="VXS Industrial Intelligence">
+        <img class="brand-mark" src="assets/vxs_logo_mark_v2.1_transparent.png" alt="VXS">
+        <span class="brand-text">
+          <span class="brand-name">VXS INDUSTRIAL</span>
+          <span class="brand-system">FREE EARLY RISK SCAN</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="privacy.html">Data Handling</a>
+        <a class="button secondary" href="docs/FDE_Intake_Form_Field_Map.md">Field Map</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="shell form-shell">
+        <div class="section-heading">
+          <div class="eyebrow">PROTOCOL-ASSISTED MANUAL REVIEW</div>
+          <h1>Apply for a Free Early Risk Scan.</h1>
+          <p>Submit limited parameters only. You do not need to share a full formula, exact ratios, supplier names, or confidential brand information.</p>
+          <div class="note-row">
+            <span class="tag">NO PAYMENT</span>
+            <span class="tag">NO FULL FORMULA REQUIRED</span>
+            <span class="tag">MANUAL REVIEW DISCLOSED</span>
+          </div>
+        </div>
+
+        <form class="form-panel" id="fde-intake">
+          <div class="field-grid">
+            <div class="field">
+              <label for="email">Email for report delivery</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="role">Your role</label>
+              <select id="role" name="role" required>
+                <option value="">Select</option>
+                <option>Founder / operator</option>
+                <option>Formulator</option>
+                <option>Consultant</option>
+                <option>R&D / technical</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="productType">Product type</label>
+              <select id="productType" name="productType" required>
+                <option value="">Select</option>
+                <option>Functional beverage</option>
+                <option>Probiotic beverage</option>
+                <option>Mushroom / adaptogen drink</option>
+                <option>Powder supplement</option>
+                <option>Gummy / chewable supplement</option>
+                <option>Protein / nutrition bar</option>
+                <option>Other sensitive product system</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="stage">Current stage</label>
+              <select id="stage" name="stage" required>
+                <option value="">Select</option>
+                <option>Concept / bench formulation</option>
+                <option>Bench prototype</option>
+                <option>Pre-pilot</option>
+                <option>Pilot run planned</option>
+                <option>Commercial run planned</option>
+                <option>Already failed during scale-up</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="scale">Target scale</label>
+              <select id="scale" name="scale" required>
+                <option value="">Select</option>
+                <option>Bench only</option>
+                <option>Under 100 L / kg</option>
+                <option>100-1,000 L / kg</option>
+                <option>1,000-5,000 L / kg</option>
+                <option>5,000 L / kg+</option>
+                <option>Unknown</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="process">Primary process</label>
+              <select id="process" name="process" required>
+                <option value="">Select</option>
+                <option>Cold-fill / cold process</option>
+                <option>Hot-fill / pasteurization</option>
+                <option>Fermentation</option>
+                <option>Spray drying</option>
+                <option>Extrusion</option>
+                <option>High-shear mixing / homogenization</option>
+                <option>Unknown / not selected</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="ingredientCount">Ingredient count range</label>
+              <select id="ingredientCount" name="ingredientCount">
+                <option value="">Select</option>
+                <option>1-5</option>
+                <option>6-10</option>
+                <option>11-20</option>
+                <option>20+</option>
+                <option>Unknown</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sensitive">Sensitive system flags</label>
+              <select id="sensitive" name="sensitive">
+                <option value="">Select primary flag</option>
+                <option>Living cultures / probiotics</option>
+                <option>Heat-sensitive actives</option>
+                <option>Proteins / peptides</option>
+                <option>Emulsion / suspension</option>
+                <option>Moisture-sensitive actives</option>
+                <option>Multiple sensitive systems</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="concern">Main concern</label>
+            <textarea id="concern" name="concern" placeholder="Example: probiotic survival after hot-fill, separation after 3 weeks, taste stable but shelf-life uncertain, powder caking during storage..." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="parameters">Optional process parameters or ranges</label>
+            <textarea id="parameters" name="parameters" placeholder="Temperature range, pH range, target shelf-life, processing steps, packaging type. Avoid exact proprietary formula ratios unless necessary."></textarea>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" id="manualConsent" required>
+            <span>I understand that this early diagnostic batch is reviewed through a protocol-assisted manual process. My submission will be used to generate my diagnostic brief and will not be shared publicly without separate permission.</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="aggregateConsent">
+            <span>I allow VXS Industrial Intelligence to retain anonymized, aggregated parameters from my submission for internal failure-pattern analysis. This excludes my name, company, brand, exact formula, supplier information, and contact details.</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="publicConsent">
+            <span>I allow VXS Industrial Intelligence to reference this case publicly only after removing identifying details and only with a separate preview or approval step.</span>
+          </label>
+
+          <div class="form-actions">
+            <button class="button" type="submit">Generate Intake Email</button>
+            <button class="button secondary" type="button" id="copy-output">Copy Generated Intake</button>
+            <a class="button ghost" id="email-link" href="#">Open Email Draft</a>
+          </div>
+          <p class="fine-print">Static Phase 0 mode: this page formats your intake into an email-ready brief. Replace the delivery email in `script.js` after the VXS inbox is created.</p>
+          <div class="output-box" id="output">Generated intake brief will appear here.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <span>VXS Industrial Intelligence / Formula Diagnostic Engine</span>
+      <a href="privacy.html">Data handling statement</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
