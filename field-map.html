@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intake Form Field Map | VXS Industrial Intelligence</title>
+  <meta name="description" content="Detailed field map specification for the VXS Formula Diagnostic Engine intake protocol.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Custom Styling for Field Map Dashboard */
+    .dashboard-container {
+      margin-top: 32px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.88);
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .dashboard-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--soft-border);
+      background: var(--industrial-white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .dashboard-tabs {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tab-btn {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.6);
+      color: var(--structural-gray);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--system-navy);
+      color: #fff;
+      border-color: var(--system-navy);
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--system-navy);
+    }
+
+    .dashboard-body {
+      padding: 32px;
+    }
+
+    .dashboard-view {
+      display: none;
+    }
+
+    .dashboard-view.active {
+      display: block;
+    }
+
+    /* Structured Field Map Table Styles */
+    .field-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .field-table th,
+    .field-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--soft-border);
+      font-size: 14px;
+    }
+
+    .field-table th {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      color: var(--structural-gray);
+      font-weight: 600;
+      background: var(--industrial-white);
+    }
+
+    .field-name {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+      color: var(--system-navy);
+    }
+
+    .field-type-badge {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      background: rgba(14, 42, 71, 0.06);
+      color: var(--system-navy);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .prohibited-card {
+      border: 1px solid rgba(214, 69, 69, 0.2);
+      background: rgba(214, 69, 69, 0.02);
+      border-radius: 4px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .prohibited-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--failure-red);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prohibited-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .prohibited-item {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      color: var(--structural-gray);
+      background: #fff;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prohibited-item::before {
+      content: "✕";
+      color: var(--failure-red);
+      font-weight: bold;
+    }
+
+    .section-heading-sm {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--system-navy);
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Code View Styles */
+    .code-display-wrapper {
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(14, 42, 71, 0.88);
+      color: #fff;
+      border: 0;
+      padding: 6px 12px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--precision-cyan);
+    }
+
+    .markdown-code-block {
+      margin: 0;
+      padding: 24px;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 4px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    @media (max-width: 900px) {
+      .prohibited-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .prohibited-grid {
+        grid-template-columns: 1fr;
+      }
+      .dashboard-body {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="index.html" aria-label="VXS Industrial Intelligence">
+        <img class="brand-mark" src="assets/vxs_logo_mark_v2.1_transparent.png" alt="VXS">
+        <span class="brand-text">
+          <span class="brand-name">VXS INDUSTRIAL</span>
+          <span class="brand-system">INTAKE FORM FIELD MAP</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="intake.html">Intake Form</a>
+        <a href="privacy.html">Data Handling</a>
+        <a class="button secondary" href="brief-template.html">Report Template</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="eyebrow" style="color: var(--precision-cyan);">FORM INTAKE SCHEMA</div>
+          <h1>FDE Intake Blueprint Specifications</h1>
+          <p class="lead">Under the VXS controlled transparency protocol, FDE intake is restricted to macro process parameters. Review the structured field schema below, detailing what we collect, why we collect it, and what we strictly prohibit.</p>
+        </div>
+
+        <div class="dashboard-container">
+          <div class="dashboard-header">
+            <div class="dashboard-tabs">
+              <button class="tab-btn active" onclick="switchTab('visual')">FIELD DIRECTORY</button>
+              <button class="tab-btn" onclick="switchTab('raw')">RAW MD BLUEPRINT</button>
+            </div>
+          </div>
+
+          <div class="dashboard-body">
+            <!-- TAB 1: FIELD DIRECTORY -->
+            <div id="view-visual" class="dashboard-view active">
+              
+              <!-- Section 1: Required Fields -->
+              <div class="section-heading-sm">
+                <span>REQUIRED DIAGNOSTIC PARAMETERS</span>
+                <span class="tag" style="background: rgba(214, 69, 69, 0.05); color: var(--failure-red); border-color: rgba(214, 69, 69, 0.15);">Mandatory</span>
+              </div>
+              <table class="field-table">
+                <thead>
+                  <tr>
+                    <th style="width: 200px;">Parameter</th>
+                    <th style="width: 120px;">Type</th>
+                    <th>Target Scope / Options</th>
+                    <th>Diagnostic Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="field-name">Email Address</span></td>
+                    <td><span class="field-type-badge">Email</span></td>
+                    <td>Valid professional contact address.</td>
+                    <td>Report routing and verification secure channel.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Your Role</span></td>
+                    <td><span class="field-type-badge">Select</span></td>
+                    <td>Founder / Formulator / Consultant / R&D / Other</td>
+                    <td>Calibrates report vocabulary and recommendation context.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Product Type</span></td>
+                    <td><span class="field-type-badge">Select</span></td>
+                    <td>Functional drink / probiotic drink / powder drink / gummy / bar / other</td>
+                    <td>Determines baseline physical state and matrix behavior boundaries.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Current Stage</span></td>
+                    <td><span class="field-type-badge">Select</span></td>
+                    <td>Concept / bench / pre-pilot / pilot planned / commercial planned / failed</td>
+                    <td>Directly influences diagnostic confidence metrics.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Target Scale</span></td>
+                    <td><span class="field-type-badge">Select</span></td>
+                    <td>Bench / under 100L / 100-1000L / 1000-5000L / 5000L+ / unknown</td>
+                    <td>Models scaling fluid dynamics and thermodynamic dwell times.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Primary Process</span></td>
+                    <td><span class="field-type-badge">Select</span></td>
+                    <td>Cold-fill / Hot-fill / Fermentation / Spray drying / Extrusion / High-shear</td>
+                    <td>Establishes physical stressors (T, M, B) mapping anchors.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Main Concern</span></td>
+                    <td><span class="field-type-badge">Textarea</span></td>
+                    <td>Stated stability, active decay, phase separation, or processing failures.</td>
+                    <td>Grounds analytical modeling on actual physical anomalies.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Intake Consent</span></td>
+                    <td><span class="field-type-badge">Checkbox</span></td>
+                    <td>Explicit review protocol verification.</td>
+                    <td>Ensures alignment on early-stage batch manual validation.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Section 2: Optional Fields -->
+              <div class="section-heading-sm">
+                <span>OPTIONAL COMPATIBILITY SCAN FIELDS</span>
+                <span class="tag" style="background: rgba(0, 169, 198, 0.05); color: var(--precision-cyan); border-color: rgba(0, 169, 198, 0.15);">Highly Recommended</span>
+              </div>
+              <table class="field-table">
+                <thead>
+                  <tr>
+                    <th style="width: 200px;">Parameter</th>
+                    <th style="width: 120px;">Type</th>
+                    <th>Target Scope / Options</th>
+                    <th>Diagnostic Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="field-name">Ingredient Count</span></td>
+                    <td><span class="field-type-badge">Select</span></td>
+                    <td>1-5 / 6-10 / 11-20 / 20+ / unknown</td>
+                    <td>Estimates chemical interaction and pH conflict probability.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Sensitive System Flags</span></td>
+                    <td><span class="field-type-badge">Select</span></td>
+                    <td>Living cultures, heat-sensitive actives, proteins, emulsions, moisture-sensitives</td>
+                    <td>Triggers targeted rules for specific sub-system vulnerabilities.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Process Parameters</span></td>
+                    <td><span class="field-type-badge">Textarea</span></td>
+                    <td>Temperature range, target pH, target shelf-life, packaging style.</td>
+                    <td>Provides physical constraints for thermodynamic and stability drift calculations.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="field-name">Data Retention Level</span></td>
+                    <td><span class="field-type-badge">Checkbox</span></td>
+                    <td>Opt-in to anonymized aggregate pattern logging database.</td>
+                    <td>Enables pattern signature deposition for system optimization.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Section 3: Prohibited Fields (Trust Defense Line 1) -->
+              <div class="prohibited-card">
+                <div class="prohibited-title">
+                  <span style="font-family: 'Space Grotesk', sans-serif;">✕ STRICTLY PROHIBITED INTAKE FIELDS</span>
+                </div>
+                <p class="fine-print" style="margin-bottom: 20px; color: var(--structural-gray);">
+                  To protect your intellectual property and guarantee legal boundaries, the FDE protocol strictly bans the input of the following items under Phase 0. <strong>If any of these parameters are entered into intake forms, they will be scrubbed immediately.</strong>
+                </p>
+                <div class="prohibited-grid">
+                  <div class="prohibited-item">Full proprietary formula</div>
+                  <div class="prohibited-item">Exact percentage ratios</div>
+                  <div class="prohibited-item">Supplier identities</div>
+                  <div class="prohibited-item">Commercial brand names</div>
+                  <div class="prohibited-item">Contract packager names</div>
+                  <div class="prohibited-item">Customer list metrics</div>
+                  <div class="prohibited-item">Proprietary process steps</div>
+                  <div class="prohibited-item">Unpublished IP patents</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- TAB 2: RAW MD BLUEPRINT -->
+            <div id="view-raw" class="dashboard-view">
+              <div class="code-display-wrapper">
+                <button class="copy-btn" onclick="copyBlueprint()">COPY FIELD MAP</button>
+                <pre class="markdown-code-block"><code id="raw-markdown-content"># FDE Intake Form Field Map
+
+**Version**: Phase 0 Launch MVP  
+**Purpose**: Use this as the field blueprint for the static intake page, Tally, Typeform, or any future form tool.
+
+---
+
+## Required Fields
+
+| Field | Type | Options / Guidance | Why It Matters |
+| --- | --- | --- | --- |
+| Email | Email | Report delivery only | Required for delivery |
+| Role | Select | Founder / Formulator / Consultant / R&D / Other | Helps tune report language |
+| Product Type | Select | Functional beverage / probiotic beverage / mushroom or adaptogen drink / powder supplement / gummy / bar / other | Defines initial risk context |
+| Current Stage | Select | Concept / bench / pre-pilot / pilot planned / commercial planned / already failed | Determines confidence level |
+| Target Scale | Select | Bench / under 100 / 100-1000 / 1000-5000 / 5000+ / unknown | Drives scale-up risk |
+| Primary Process | Select | Cold process / hot-fill / fermentation / spray drying / extrusion / high-shear / unknown | Maps to T/B/M layers |
+| Main Concern | Long text | User-stated failure concern | Keeps diagnosis grounded |
+| Manual Review Consent | Checkbox, required | Must be explicit | Required for trust and accuracy |
+
+---
+
+## Optional Fields
+
+| Field | Type | Guidance |
+| --- | --- | --- |
+| Ingredient Count Range | Select | 1-5 / 6-10 / 11-20 / 20+ / unknown |
+| Sensitive System Flags | Select | Living cultures, heat-sensitive actives, proteins, emulsion, moisture-sensitive actives, multiple |
+| Optional Process Parameters | Long text | Temperature range, pH range, target shelf-life, packaging type, process sequence |
+| Aggregation Consent | Checkbox, default off | Allows anonymized pattern log retention |
+| Public Case Consent | Checkbox, default off | Allows public anonymized case only after separate preview/approval |
+
+---
+
+## Fields Not To Ask For In Phase 0
+
+- Full formula
+- Exact ingredient percentages
+- Supplier names
+- Customer names
+- Brand name
+- Manufacturing contract details
+- Proprietary processing instructions
+- Medical or regulatory claims
+
+---
+
+## Tally / Typeform Setup Notes
+
+Use the same field order as the static intake page:
+
+1. Contact and role
+2. Product snapshot
+3. Process and scale
+4. Sensitivity flags
+5. Main concern
+6. Optional process ranges
+7. Consent checkboxes
+
+Recommended submit confirmation:
+
+```text
+Your FDE early risk scan request has been received.
+
+This is a protocol-assisted manual review. If selected for the early batch,
+you will receive a diagnostic brief focused on T/B/C/M/S risk layers.
+```</code></pre>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <span>VXS Industrial Intelligence / Formula Diagnostic Engine</span>
+      <a href="intake.html" style="font-weight: bold; color: var(--system-navy);">Apply for Free Scan</a>
+    </div>
+  </footer>
+
+  <script>
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.dashboard-view').forEach(view => view.classList.remove('active'));
+      
+      if (tabId === 'visual') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('view-visual').classList.add('active');
+      } else {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('view-raw').classList.add('active');
+      }
+    }
+
+    // Copy Raw Markdown to Clipboard
+    function copyBlueprint() {
+      const codeElement = document.getElementById('raw-markdown-content');
+      const text = codeElement.innerText;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const copyBtn = document.querySelector('.copy-btn');
+        copyBtn.innerText = "COPIED!";
+        setTimeout(() => {
+          copyBtn.innerText = "COPY FIELD MAP";
+        }, 2000);
+      }).catch(err => {
+        alert("Clipboard copy failed. Please select and copy manually.");
+      });
+    }
+  </script>
+</body>
+</html>
