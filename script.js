@@ -16,7 +16,7 @@ function checked(id) {
 }
 
 function buildIntake() {
-  return `FDE FREE EARLY RISK SCAN / INTAKE
+  return `FDE NON-CONFIDENTIAL RISK READ / INTAKE
 
 CONTACT
 Email: ${valueOf("email")}
@@ -46,7 +46,7 @@ No complete formula, exact ratios, supplier names, or brand names are required f
 }
 
 function updateEmailLink(text) {
-  const subject = encodeURIComponent("FDE Free Early Risk Scan Intake");
+  const subject = encodeURIComponent("FDE Non-Confidential Risk Read Intake");
   const body = encodeURIComponent(text);
   emailLink.href = `mailto:${DELIVERY_EMAIL}?subject=${subject}&body=${body}`;
 }
@@ -64,15 +64,15 @@ if (form) {
 if (copyButton) {
   copyButton.addEventListener("click", async () => {
     const text = output.textContent.trim();
-    if (!text || text === "Generated intake brief will appear here.") {
-      output.textContent = "Generate the intake brief first, then copy it.";
+    if (!text || text === "Generated risk read brief will appear here.") {
+      output.textContent = "Generate the risk read brief first, then copy it.";
       return;
     }
     try {
       await navigator.clipboard.writeText(text);
       copyButton.textContent = "Copied";
       setTimeout(() => {
-        copyButton.textContent = "Copy Generated Intake";
+        copyButton.textContent = "Copy Generated Brief";
       }, 1400);
     } catch (error) {
       output.textContent = `${text}\n\nCOPY NOTE: Browser clipboard access was blocked. Select this text manually and copy it.`;
