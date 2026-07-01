@@ -58,6 +58,12 @@ if (form) {
     const text = buildIntake();
     output.textContent = text;
     updateEmailLink(text);
+    if (typeof gtag === "function") {
+      gtag("event", "fde_intake_generate", {
+        event_category: "engagement",
+        event_label: "non_confidential_risk_read"
+      });
+    }
   });
 }
 
@@ -71,11 +77,28 @@ if (copyButton) {
     try {
       await navigator.clipboard.writeText(text);
       copyButton.textContent = "Copied";
+      if (typeof gtag === "function") {
+        gtag("event", "fde_intake_copy", {
+          event_category: "engagement",
+          event_label: "generated_brief_copy"
+        });
+      }
       setTimeout(() => {
         copyButton.textContent = "Copy Generated Brief";
       }, 1400);
     } catch (error) {
       output.textContent = `${text}\n\nCOPY NOTE: Browser clipboard access was blocked. Select this text manually and copy it.`;
+    }
+  });
+}
+
+if (emailLink) {
+  emailLink.addEventListener("click", () => {
+    if (typeof gtag === "function") {
+      gtag("event", "fde_intake_email_open", {
+        event_category: "engagement",
+        event_label: "generated_brief_mailto"
+      });
     }
   });
 }
