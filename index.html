@@ -1,218 +1,328 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="2wrbkZlqLYXuWYV8L_KPEs2yA88-Ur84__uRXhDDz9E">
-  <title>Formula Diagnostic Engine | VXS Industrial Intelligence</title>
-  <meta name="description" content="Start with a non-confidential formula and scale-up risk read. No full formula required for the FDE early diagnostic batch.">
-  <link rel="canonical" href="https://fde.vxs.systems/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Formula Diagnostic Engine | VXS Industrial Intelligence">
-  <meta property="og:description" content="A non-confidential pre-production risk read for early-stage functional beverage, supplement, and nutritional product systems.">
-  <meta property="og:url" content="https://fde.vxs.systems/">
-  <meta property="og:site_name" content="VXS Industrial Intelligence">
-  <meta property="og:image" content="https://fde.vxs.systems/assets/vxs_logo_mark_v2.3_transparent.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Formula Diagnostic Engine | VXS Industrial Intelligence">
-  <meta name="twitter:description" content="A non-confidential pre-production risk read for functional product systems.">
-  <meta name="twitter:image" content="https://fde.vxs.systems/assets/vxs_logo_mark_v2.3_transparent.png">
-  <meta name="twitter:image:alt" content="VXS Industrial Intelligence logo">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="2wrbkZlqLYXuWYV8L_KPEs2yA88-Ur84__uRXhDDz9E"
+    />
+    <title>Formula Diagnostic Engine | VXS Industrial Intelligence</title>
+    <meta
+      name="description"
+      content="Start with a non-confidential formula and scale-up risk read. No full formula required for the FDE early diagnostic batch."
+    />
+    <link rel="canonical" href="https://fde.vxs.systems/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Formula Diagnostic Engine | VXS Industrial Intelligence"
+    />
+    <meta
+      property="og:description"
+      content="A non-confidential pre-production risk read for early-stage functional beverage, supplement, and nutritional product systems."
+    />
+    <meta property="og:url" content="https://fde.vxs.systems/" />
+    <meta property="og:site_name" content="VXS Industrial Intelligence" />
+    <meta
+      property="og:image"
+      content="https://fde.vxs.systems/assets/vxs_logo_mark_v2.3_transparent.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Formula Diagnostic Engine | VXS Industrial Intelligence"
+    />
+    <meta
+      name="twitter:description"
+      content="A non-confidential pre-production risk read for functional product systems."
+    />
+    <meta
+      name="twitter:image"
+      content="https://fde.vxs.systems/assets/vxs_logo_mark_v2.3_transparent.png"
+    />
+    <meta name="twitter:image:alt" content="VXS Industrial Intelligence logo" />
+    <script type="application/ld+json">
       {
-        "@type": "Organization",
-        "@id": "https://vxs.systems/#organization",
-        "name": "VXS Industrial Intelligence",
-        "url": "https://vxs.systems/",
-        "logo": "https://vxs.systems/assets/vxs_logo_mark_v2.3_transparent.png"
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://fde.vxs.systems/#website",
-        "url": "https://fde.vxs.systems/",
-        "name": "Formula Diagnostic Engine",
-        "publisher": { "@id": "https://vxs.systems/#organization" }
-      },
-      {
-        "@type": "Service",
-        "name": "Formula Diagnostic Engine",
-        "url": "https://fde.vxs.systems/",
-        "description": "A protocol-assisted, non-confidential pre-production risk read for early-stage functional beverage, supplement, and nutritional product systems.",
-        "provider": { "@id": "https://vxs.systems/#organization" },
-        "areaServed": "Global"
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://vxs.systems/#organization",
+            "name": "VXS Industrial Intelligence",
+            "url": "https://vxs.systems/",
+            "logo": "https://vxs.systems/assets/vxs_logo_mark_v2.3_transparent.png"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://fde.vxs.systems/#website",
+            "url": "https://fde.vxs.systems/",
+            "name": "Formula Diagnostic Engine",
+            "publisher": { "@id": "https://vxs.systems/#organization" }
+          },
+          {
+            "@type": "Service",
+            "name": "Formula Diagnostic Engine",
+            "url": "https://fde.vxs.systems/",
+            "description": "A protocol-assisted, non-confidential pre-production risk read for early-stage functional beverage, supplement, and nutritional product systems.",
+            "provider": { "@id": "https://vxs.systems/#organization" },
+            "areaServed": "Global"
+          }
+        ]
       }
-    ]
-  }
-  </script>
-  <link rel="stylesheet" href="styles.css">
-  <script src="gdpr.js" defer></script>
-</head>
-<body>
-  <header class="site-header">
-    <div class="shell nav">
-      <a class="brand" href="https://vxs.systems/" aria-label="VXS Industrial Intelligence">
-        <img class="brand-mark" src="assets/vxs_logo_mark_v2.3_transparent.png" alt="VXS">
-        <span class="brand-text">
-          <span class="brand-name">VXS INDUSTRIAL</span>
-          <span class="brand-system">INDUSTRIAL INTELLIGENCE SYSTEM</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#risk-matrix">Risk Matrix</a>
-        <a href="#process">Process</a>
-        <a href="privacy.html">Data Handling</a>
-        <a class="button" href="intake.html">Start Risk Read</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <div class="eyebrow">FDE / EARLY DIAGNOSTIC BATCH</div>
-          <h1>Start with a non-confidential scale-up risk read.</h1>
-          <p class="lead">Not ready to share your formula? Submit product type, process route, target scale, ingredient classes, and the failure mode you are worried about. FDE maps thermodynamic, biological, chemical, mechanical, and stability risks before pilot or commercial production.</p>
-          <div class="hero-actions">
-            <a class="button" href="intake.html">Start Non-Confidential Risk Read</a>
-            <a class="button secondary" href="privacy.html">Review Data Handling</a>
-          </div>
-          <div class="note-row">
-            <span class="tag">NO PAYMENT</span>
-            <span class="tag">NO FULL FORMULA REQUIRED</span>
-            <span class="tag">MANUAL PROTOCOL REVIEW</span>
-            <span class="tag">PATTERN-LEVEL LEARNING ONLY BY CONSENT</span>
-          </div>
-        </div>
-        <aside class="diagnostic-panel" aria-label="T/B/C/M/S risk matrix">
-          <div class="panel-header">
-            <span class="panel-title">T/B/C/M/S RISK MATRIX</span>
-            <span class="status-pill">INTAKE OPEN</span>
-          </div>
-          <div class="risk-stack">
-            <div class="risk-row">
-              <span class="risk-code">T</span>
-              <span class="risk-name">Thermodynamic stress and heat sensitivity</span>
-              <span class="risk-state">scan layer</span>
-            </div>
-            <div class="risk-row">
-              <span class="risk-code">B</span>
-              <span class="risk-name">Living systems, cultures, enzymes, fermentation drift</span>
-              <span class="risk-state">scan layer</span>
-            </div>
-            <div class="risk-row">
-              <span class="risk-code">C</span>
-              <span class="risk-name">pH conflict, oxidation, ingredient interaction</span>
-              <span class="risk-state">scan layer</span>
-            </div>
-            <div class="risk-row">
-              <span class="risk-code">M</span>
-              <span class="risk-name">Shear, pressure, mixing, homogenization stress</span>
-              <span class="risk-state">scan layer</span>
-            </div>
-            <div class="risk-row">
-              <span class="risk-code">S</span>
-              <span class="risk-name">Shelf-life, separation, moisture, storage decay</span>
-              <span class="risk-state">scan layer</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="risk-matrix">
-      <div class="shell">
-        <div class="section-heading">
-          <h2>A structured diagnostic layer for high-sensitivity product systems.</h2>
-          <p>FDE does not optimize your formula or replace lab testing. It creates a clear risk map so your next validation step is not driven by guesswork.</p>
-        </div>
-        <div class="matrix">
-          <article class="matrix-card">
-            <span class="matrix-code">T_LAYER</span>
-            <h3>Thermal</h3>
-            <p>Heat treatment, hot-fill, pasteurization, drying, thermal cycling, and energy transfer windows.</p>
-          </article>
-          <article class="matrix-card">
-            <span class="matrix-code">B_LAYER</span>
-            <h3>Biological</h3>
-            <p>Probiotic viability, enzyme activity, fermentation behavior, living cultures, and biological decay.</p>
-          </article>
-          <article class="matrix-card">
-            <span class="matrix-code">C_LAYER</span>
-            <h3>Chemical</h3>
-            <p>pH compatibility, oxidation, mineral interaction, ingredient conflict, and packaging migration risk.</p>
-          </article>
-          <article class="matrix-card">
-            <span class="matrix-code">M_LAYER</span>
-            <h3>Mechanical</h3>
-            <p>Shear, pressure, homogenization, mixing order, filling conditions, and process stress exposure.</p>
-          </article>
-          <article class="matrix-card">
-            <span class="matrix-code">S_LAYER</span>
-            <h3>Stability</h3>
-            <p>Shelf-life decay, separation, sediment, moisture migration, light sensitivity, and transport stress.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact">
-      <div class="shell two-col">
-        <article class="text-card">
-          <h3>What the first read is for</h3>
-          <p>A low-friction diagnostic brief for founders, formulators, and consultants facing scale-up uncertainty. Start with ranges, categories, process conditions, and your main concern; a complete proprietary formula is not required.</p>
-        </article>
-        <article class="text-card">
-          <h3>What it is not</h3>
-          <p>It is not a safety review, regulatory review, medical claim assessment, supplier recommendation, or guarantee of scale-up success. It is a structured risk map for your next validation decision.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="process">
-      <div class="shell">
-        <div class="section-heading">
-          <h2>Early batch process</h2>
-          <p>This begins as a non-confidential risk read and can deepen only if useful. Manual review is deliberate: the system is being validated on real-world problems before automation.</p>
-        </div>
-        <div class="process">
-          <article class="process-step">
-            <span class="step-index">01 / APPLY</span>
-            <h3>Submit limited parameters</h3>
-            <p>Provide product type, process route, target scale, ingredient classes, and the risk you are most concerned about.</p>
-          </article>
-          <article class="process-step">
-            <span class="step-index">02 / MAP</span>
-            <h3>Risk layer mapping</h3>
-            <p>Your system is mapped across thermodynamic, biological, chemical, mechanical, and stability layers.</p>
-          </article>
-          <article class="process-step">
-            <span class="step-index">03 / BRIEF</span>
-            <h3>Receive diagnostic brief</h3>
-            <p>You receive a concise brief with observed risks, critical unknowns, and recommended validation steps.</p>
-          </article>
-          <article class="process-step">
-            <span class="step-index">04 / FEEDBACK</span>
-            <h3>Confirm usefulness</h3>
-            <p>If the brief is useful, your feedback helps refine the protocol. Pattern-level learning is retained only by consent.</p>
-          </article>
-        </div>
-        <div class="hero-actions">
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="gdpr.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell nav">
+        <a
+          class="brand"
+          href="https://vxs.systems/"
+          aria-label="VXS Industrial Intelligence"
+        >
+          <img
+            class="brand-mark"
+            src="assets/vxs_logo_mark_v2.3_transparent.png"
+            alt="VXS"
+          />
+          <span class="brand-text">
+            <span class="brand-name">VXS INDUSTRIAL</span>
+            <span class="brand-system">INDUSTRIAL INTELLIGENCE SYSTEM</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#risk-matrix">Risk Matrix</a>
+          <a href="#process">Process</a>
+          <a href="diagnostic-scope.html">Scope</a>
+          <a href="privacy.html">Data Handling</a>
           <a class="button" href="intake.html">Start Risk Read</a>
-          <a class="button ghost" href="brief-template.html">View Report Template</a>
-        </div>
+        </nav>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="site-footer">
-    <div class="shell footer-grid">
-      <span><a href="https://vxs.systems/">VXS Industrial Intelligence</a> / Formula Diagnostic Engine</span>
-      <span>Input Chaos. Output Order.</span>
-    </div>
-  </footer>
-</body>
+    <main>
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <div class="eyebrow">FDE / EARLY DIAGNOSTIC BATCH</div>
+            <h1>Start with a non-confidential scale-up risk read.</h1>
+            <p class="lead">
+              Not ready to share your formula? Submit product type, process
+              route, target scale, ingredient classes, and the failure mode you
+              are worried about. FDE maps thermodynamic, biological, chemical,
+              mechanical, and stability risks before pilot or commercial
+              production.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="intake.html"
+                >Start Non-Confidential Risk Read</a
+              >
+              <a class="button secondary" href="privacy.html"
+                >Review Data Handling</a
+              >
+              <a class="button ghost" href="diagnostic-scope.html"
+                >Review Diagnostic Scope</a
+              >
+            </div>
+            <div class="note-row">
+              <span class="tag">NO PAYMENT</span>
+              <span class="tag">NO FULL FORMULA REQUIRED</span>
+              <span class="tag">MANUAL PROTOCOL REVIEW</span>
+              <span class="tag">PATTERN-LEVEL LEARNING ONLY BY CONSENT</span>
+            </div>
+          </div>
+          <aside class="diagnostic-panel" aria-label="T/B/C/M/S risk matrix">
+            <div class="panel-header">
+              <span class="panel-title">T/B/C/M/S RISK MATRIX</span>
+              <span class="status-pill">INTAKE OPEN</span>
+            </div>
+            <div class="risk-stack">
+              <div class="risk-row">
+                <span class="risk-code">T</span>
+                <span class="risk-name"
+                  >Heat can reduce active performance before launch</span
+                >
+                <span class="risk-state">scan layer</span>
+              </div>
+              <div class="risk-row">
+                <span class="risk-code">B</span>
+                <span class="risk-name"
+                  >Live cultures may not persist to shelf life</span
+                >
+                <span class="risk-state">scan layer</span>
+              </div>
+              <div class="risk-row">
+                <span class="risk-code">C</span>
+                <span class="risk-name"
+                  >Inputs can react, discolor, or shift flavour in the
+                  pack</span
+                >
+                <span class="risk-state">scan layer</span>
+              </div>
+              <div class="risk-row">
+                <span class="risk-code">M</span>
+                <span class="risk-name"
+                  >Line conditions can change texture or structure</span
+                >
+                <span class="risk-state">scan layer</span>
+              </div>
+              <div class="risk-row">
+                <span class="risk-code">S</span>
+                <span class="risk-name"
+                  >The product can separate, settle, or haze after launch</span
+                >
+                <span class="risk-state">scan layer</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="risk-matrix">
+        <div class="shell">
+          <div class="section-heading">
+            <h2>
+              A structured diagnostic layer for high-sensitivity product
+              systems.
+            </h2>
+            <p>
+              FDE does not optimize your formula or replace lab testing. It
+              creates a clear risk map so your next validation step is not
+              driven by guesswork.
+            </p>
+          </div>
+          <div class="matrix">
+            <article class="matrix-card">
+              <span class="matrix-code">T_LAYER</span>
+              <h3>Thermal</h3>
+              <p>
+                When heat treatment can reduce the outcome you paid to protect.
+                Validate hot-fill, pasteurisation, drying, cooling, and thermal-cycling conditions.
+              </p>
+            </article>
+            <article class="matrix-card">
+              <span class="matrix-code">B_LAYER</span>
+              <h3>Biological</h3>
+              <p>
+                When labelled live cultures or enzyme activity may not persist to shelf life.
+                Validate viability, fermentation behaviour, and biological decay conditions.
+              </p>
+            </article>
+            <article class="matrix-card">
+              <span class="matrix-code">C_LAYER</span>
+              <h3>Chemical</h3>
+              <p>
+                When compatible inputs can react, discolour, or shift flavour in the pack.
+                Validate pH, oxidation, mineral interaction, and packaging exposure.
+              </p>
+            </article>
+            <article class="matrix-card">
+              <span class="matrix-code">M_LAYER</span>
+              <h3>Mechanical</h3>
+              <p>
+                When line conditions can change texture or structure.
+                Validate shear, pressure, homogenisation, mixing order, and filling conditions.
+              </p>
+            </article>
+            <article class="matrix-card">
+              <span class="matrix-code">S_LAYER</span>
+              <h3>Stability</h3>
+              <p>
+                When the product can separate, settle, haze, or drift after launch.
+                Validate shelf-life, moisture, light, and transport exposure.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="shell two-col">
+          <article class="text-card">
+            <h3>What the first read is for</h3>
+            <p>
+              A low-friction diagnostic brief for founders, formulators, and
+              consultants facing scale-up uncertainty. Start with ranges,
+              categories, process conditions, and your main concern; a complete
+              proprietary formula is not required.
+            </p>
+          </article>
+          <article class="text-card">
+            <h3>What it is not</h3>
+            <p>
+              It is not a safety review, regulatory review, medical claim
+              assessment, supplier recommendation, or guarantee of scale-up
+              success. It is a structured risk map for your next validation
+              decision.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="process">
+        <div class="shell">
+          <div class="section-heading">
+            <h2>Early batch process</h2>
+            <p>
+              This begins as a non-confidential risk read and can deepen only if
+              useful. Manual review is deliberate: the system is being validated
+              on real-world problems before automation.
+            </p>
+          </div>
+          <div class="process">
+            <article class="process-step">
+              <span class="step-index">01 / APPLY</span>
+              <h3>Submit limited parameters</h3>
+              <p>
+                Provide product type, process route, target scale, ingredient
+                classes, and the risk you are most concerned about.
+              </p>
+            </article>
+            <article class="process-step">
+              <span class="step-index">02 / MAP</span>
+              <h3>Risk layer mapping</h3>
+              <p>
+                Your system is mapped across thermodynamic, biological,
+                chemical, mechanical, and stability layers.
+              </p>
+            </article>
+            <article class="process-step">
+              <span class="step-index">03 / BRIEF</span>
+              <h3>Receive diagnostic brief</h3>
+              <p>
+                You receive a concise brief with observed risks, critical
+                unknowns, and recommended validation steps.
+              </p>
+            </article>
+            <article class="process-step">
+              <span class="step-index">04 / FEEDBACK</span>
+              <h3>Confirm usefulness</h3>
+              <p>
+                If the brief is useful, your feedback helps refine the protocol.
+                Pattern-level learning is retained only by consent.
+              </p>
+            </article>
+          </div>
+          <div class="hero-actions">
+            <a class="button" href="intake.html">Start Risk Read</a>
+            <a class="button ghost" href="brief-template.html"
+              >View Report Template</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <span
+          ><a href="https://vxs.systems/">VXS Industrial Intelligence</a> /
+          Formula Diagnostic Engine</span
+        >
+        <span>Input Chaos. Output Order.</span>
+      </div>
+    </footer>
+  </body>
 </html>
